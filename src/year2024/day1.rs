@@ -1,12 +1,17 @@
 use nom::character::complete::{line_ending, space1, u32 as nom_u32};
+use nom::combinator::{all_consuming, opt};
 use nom::multi::separated_list1;
+use nom::sequence::terminated;
 use nom::{sequence::separated_pair, IResult};
 use std::collections::HashMap;
 
 use crate::Cli;
 
 fn parse(input: &str) -> IResult<&str, Vec<(u32, u32)>> {
-    separated_list1(line_ending, separated_pair(nom_u32, space1, nom_u32))(input)
+    all_consuming(terminated(
+        separated_list1(line_ending, separated_pair(nom_u32, space1, nom_u32)),
+        opt(line_ending),
+    ))(input)
 }
 
 pub(crate) fn part1(cli: Cli) -> String {
@@ -30,7 +35,7 @@ pub(crate) fn part1(cli: Cli) -> String {
         total += left_data_item.abs_diff(right_data_item);
     }
 
-    format!("{}", total)
+    format!("part1: {}", total)
 }
 
 pub(crate) fn part2(cli: Cli) -> String {
@@ -56,5 +61,5 @@ pub(crate) fn part2(cli: Cli) -> String {
                 .unwrap_or_default();
     }
 
-    format!("{}", total)
+    format!("part2: {}", total)
 }

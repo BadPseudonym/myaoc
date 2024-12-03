@@ -12,7 +12,7 @@ fn main() {
         year => unreachable!("Unknown year {}", year),
     };
 
-    println!("Result: {}", result);
+    println!("{}", result);
 }
 
 #[derive(Parser, Clone, Debug)]
