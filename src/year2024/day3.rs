@@ -1,11 +1,13 @@
 use crate::Cli;
-use nom::branch::alt;
-use nom::bytes::complete::tag;
-use nom::character::complete::{anychar, u32 as nom_u32};
-use nom::combinator::map;
-use nom::error;
-use nom::multi::{many1, many_till};
-use nom::sequence::tuple;
+use nom::{
+    branch::alt,
+    bytes::complete::tag,
+    character::complete::{anychar, u32 as nom_u32},
+    combinator::map,
+    error,
+    multi::{many1, many_till},
+    sequence::tuple,
+};
 
 //TODO: redo all this to make it more efficiently and readable
 

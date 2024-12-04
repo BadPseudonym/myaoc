@@ -1,9 +1,11 @@
 use crate::Cli;
-use nom::character::complete::{line_ending, space1, u32 as nom_u32};
-use nom::combinator::{all_consuming, opt};
-use nom::multi::separated_list1;
-use nom::sequence::terminated;
-use nom::IResult;
+use nom::{
+    character::complete::{line_ending, space1, u32 as nom_u32},
+    combinator::{all_consuming, opt},
+    multi::separated_list1,
+    sequence::terminated,
+    IResult,
+};
 
 fn parse(input: &str) -> IResult<&str, Vec<Vec<u32>>> {
     all_consuming(terminated(
