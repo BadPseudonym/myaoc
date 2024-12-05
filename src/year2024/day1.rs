@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use nom::{
     character::complete::{line_ending, space1, u32 as nom_u32},
     combinator::{all_consuming, opt},
@@ -6,6 +5,7 @@ use nom::{
     sequence::{separated_pair, terminated},
     IResult,
 };
+use std::collections::HashMap;
 
 use crate::Cli;
 

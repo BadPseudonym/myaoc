@@ -72,12 +72,10 @@ pub(crate) fn part2(cli: Cli) -> String {
     let mut total = 0;
 
     for y in 0..input.len() {
-        'row_loop: for x in 0..input[y].len() {
+        for x in 0..input[y].len() {
             if input[y][x] != 'A' {
                 continue;
             }
-
-            let mut mas_count = 0;
 
             let left_up = offset_2d_get(&input, x, y, -1, 1);
             let right_down = offset_2d_get(&input, x, y, 1, -1);
